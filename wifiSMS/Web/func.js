@@ -1083,6 +1083,57 @@ function check4emoji(s) {
 				out = out + char;
 			}
 		}
+		
+		var regArray = new Array(12);
+
+		var i = 0;
+		for (i=0; i < 12; i++)
+		{
+			regArray[i]=new Array(2);
+		}
+
+		regArray[0][0] = new RegExp(/ :-?\)/g); // :), :-)
+		regArray[0][1] = "E056";
+
+		regArray[1][0] = new RegExp(/ :-?P/gi); // :p, :P, :-p, :-P
+		regArray[1][1] = "E105";
+
+		regArray[2][0] = new RegExp(/ :-?\(/g); // :(, :-(
+		regArray[2][1] = "E058";
+
+		regArray[3][0] = new RegExp(/ ;-?\)/g); // ;), ;-)
+		regArray[3][1] = "E405";
+
+		regArray[4][0] = new RegExp(/ ;-?\(/g); // ;(, ;-(
+		regArray[4][1] = "E401";
+
+		regArray[5][0] = new RegExp(/ :'\(/g); // :'(
+		regArray[5][1] = "E401";
+
+		regArray[6][0] = new RegExp(/ \^\^/g); // ^^
+		regArray[6][1] = "E415";
+
+		regArray[7][0] = new RegExp(/ :-?\$/g); // :$, :-$
+		regArray[7][1] = "E414";
+
+		regArray[8][0] = new RegExp(/ :-?o/gi); // :o, :O, :-o, :-O
+		regArray[8][1] = "E107";
+
+		regArray[9][0] = new RegExp(/ \(L\)/g); // (L)
+		regArray[9][1] = "E022";
+
+		regArray[10][0] = new RegExp(/ :-?d/gi); // :d, :D, :-d, :-D
+		regArray[10][1] = "E057";
+
+		regArray[11][0] = new RegExp(/ <3/g); // <3
+		regArray[11][1] = "E022";
+
+		var p = 0;
+		for (p= 0; p < 12; p++)
+		{
+			out = out.replace(regArray[p][0], " " + "<img src='" + targetToBase64(regArray[p][1]) + "'>");
+		}
+		
 		return out;
 } 
 
