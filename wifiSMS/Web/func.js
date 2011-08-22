@@ -1084,10 +1084,10 @@ function check4emoji(s) {
 			}
 		}
 		
-		var regArray = new Array(21);
+		var regArray = new Array(23);
 
 		var i = 0;
-		for (i=0; i < 21; i++)
+		for (i=0; i < 23; i++)
 		{
 			regArray[i]=new Array(2);
 		}
@@ -1131,9 +1131,6 @@ function check4emoji(s) {
 		regArray[12][0] = new RegExp(/:-?\@/g); // :@
 		regArray[12][1] = "E416";
 		
-		regArray[12][0] = new RegExp(/:-\|\|/g); // :-||
-		regArray[12][1] = "E416";
-
 		regArray[13][0] = new RegExp(/:-\*/g); //:-*
 		regArray[13][1] = "E418";
 
@@ -1157,9 +1154,16 @@ function check4emoji(s) {
 		
 		regArray[20][0] = new RegExp(/<\/3/g);
 		regArray[20][1] = "E023"
+		
+		regArray[21][0] = new RegExp(/:-\|\|/g); // :-||
+		regArray[21][1] = "E416";
+		
+		
+		regArray[22][0] = new RegExp(/:-?x/gi); // :x, :X, :-x, :-X
+		regArray[22][1] = "E40C";
 
 		var p = 0;
-		for (p= 0; p < 21; p++)
+		for (p= 0; p < 23; p++)
 		{
 			out = out.replace(regArray[p][0], "<img src='" + targetToBase64(regArray[p][1]) + "'>");
 		}
