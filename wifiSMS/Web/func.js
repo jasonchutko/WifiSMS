@@ -1084,10 +1084,10 @@ function check4emoji(s) {
 			}
 		}
 		
-		var regArray = new Array(13);
+		var regArray = new Array(21);
 
 		var i = 0;
-		for (i=0; i < 13; i++)
+		for (i=0; i < 21; i++)
 		{
 			regArray[i]=new Array(2);
 		}
@@ -1130,9 +1130,36 @@ function check4emoji(s) {
 		
 		regArray[12][0] = new RegExp(/:-?\@/g); // :@
 		regArray[12][1] = "E416";
+		
+		regArray[12][0] = new RegExp(/:-\|\|/g); // :-||
+		regArray[12][1] = "E416";
+
+		regArray[13][0] = new RegExp(/:-\*/g); //:-*
+		regArray[13][1] = "E418";
+
+		regArray[14][0] = new RegExp(/:-?]/g); //:-] :]
+		regArray[14][1] = "E402";
+
+		regArray[15][0] = new RegExp(/ x-?d/gi); //x-d
+		regArray[15][1] = "E409";
+
+		regArray[16][0] = new RegExp(/:-?s/gi); //:s
+		regArray[16][1] = "E407";
+
+		regArray[17][0] = new RegExp(/:-?\|/g); //:|
+		regArray[17][1] = "E40D";
+
+		regArray[18][0] = new RegExp(/:-?\//g); //:/ :-/
+		regArray[18][1] = "E40E";
+
+		regArray[19][0] = new RegExp(/>.>/g); //>.>
+		regArray[19][1] = "E403";
+		
+		regArray[20][0] = new RegExp(/<\/3/g);
+		regArray[20][1] = "E023"
 
 		var p = 0;
-		for (p= 0; p < 13; p++)
+		for (p= 0; p < 21; p++)
 		{
 			out = out.replace(regArray[p][0], "<img src='" + targetToBase64(regArray[p][1]) + "'>");
 		}
