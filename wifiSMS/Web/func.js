@@ -1083,7 +1083,7 @@ function check4emoji(s) {
 				out = out + char;
 			}
 		}
-				
+		
 		var regArray = new Array(23);
 
 		var i = 0;
